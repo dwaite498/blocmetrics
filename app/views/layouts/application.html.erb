@@ -13,10 +13,17 @@
         <span class="site-name">Blocmetrics</span>
         <button class="navbutton"><%= link_to "Home", root_path %></button>
         <button class="navbutton"><%= link_to "About", welcome_about_path %></button>
-        <button class="navbutton"><%= link_to "Login", welcome_about_path %></button>
+        <% if current_user %>
+          <button class="navbutton"><%= link_to "Logout", destroy_user_session_path, method: :delete %></button>
+        <% else %>
+          <button class="navbutton"><%= link_to "Login", new_user_session_path %></button>
+          <button class="navbutton"><%= link_to "Sign Up", new_user_registration_path %></button>
+        <% end %>
       </div>
     
     <div class="container">
+      <!--<p class="notice"><%= notice %></p>-->
+      <!-- <p class="alert"><%= alert %></p>-->
       <%= yield %>
     </div>
         
