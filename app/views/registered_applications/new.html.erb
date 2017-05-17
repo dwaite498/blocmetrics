@@ -1,0 +1,7 @@
+<h1>Add New Application</h1>
+
+<%= form_for @application, url: registered_applications_path do |f| %>
+    <p>Title: <%= f.text_field :title %><br /></p>
+    <p>URL: <%= f.text_field :url %><br /></p>
+    <p><%= f.submit %></p>
+<% end %>

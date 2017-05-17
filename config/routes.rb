@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # get 'welcome/index'
   
   get "welcome/about"
+  
+  resources :registered_applications, controller: 'registered_applications'
 end
