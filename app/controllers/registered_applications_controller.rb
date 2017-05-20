@@ -23,4 +23,13 @@ class RegisteredApplicationsController < ApplicationController
     def show
        @application = Application.find(params[:id]) 
     end
+    
+    def destroy
+       @application = Application.find(params[:id])
+       if @application.destroy
+           redirect_to registered_applications_path
+       else
+          render :show 
+       end
+    end
 end

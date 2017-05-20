@@ -1,8 +1,8 @@
 <h1>Index of Applications</h1>
 <% @applications.each do |application| %>
     <div class='container'>
-    <h3> <%= application.title %></h3>
-    <p> URL: <%= application.url %></p>
-    <p> Created At: <%= application.created_at %></p>
-</div>
+        <h3> <%= link_to application.title, registered_application_path(application) %></h3>
+        <p> URL: <%= application.url %></p>
+        <p> Created At: <%= application.created_at %></p>
+    </div>
 <% end %>
