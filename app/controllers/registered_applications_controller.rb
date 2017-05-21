@@ -23,7 +23,7 @@ class RegisteredApplicationsController < ApplicationController
     
     def show
        @application = Application.find(params[:id])
-       @events = @registered_application.events.group_by(&:name)
+       @events = @application.events.group_by(&:title)
     end
     
     def destroy
