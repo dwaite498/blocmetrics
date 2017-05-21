@@ -11,6 +11,7 @@ class RegisteredApplicationsController < ApplicationController
         @application = Application.new
         @application.url = params[:application][:url]
         @application.title = params[:application][:title]
+        @application.title = params[:events][:event]
         @application.user = current_user
         if @application.save
             redirect_to registered_application_path(@application), notice: "App added successfully!"
@@ -21,7 +22,8 @@ class RegisteredApplicationsController < ApplicationController
     end
     
     def show
-       @application = Application.find(params[:id]) 
+       @application = Application.find(params[:id])
+       @events = @registered_application.events.group_by(&:name)
     end
     
     def destroy

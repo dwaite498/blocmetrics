@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'faker'
+
+25.times do
+   Application.create!(
+       :title => Faker::Name.name,
+       :url => Faker::Internet.domain_name,
+       :event => Faker::Commerce.color
+    )    
+end
+
+User.create!(
+    :username => "doomhammer",
+    :email => "doomhammer@dhammer.com",
+    :password => "hammer123"
+    )

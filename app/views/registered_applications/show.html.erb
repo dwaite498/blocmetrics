@@ -5,3 +5,8 @@
     <p> Created At: <%= @application.created_at %></p>
     <%= link_to 'Delete App', @applications, method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you would like to delete this app?" } %>
 </div>
+<div class="container">
+    <% @events.each do |e| %>
+        <%= e.name %>
+    <% end %>
+</div>
