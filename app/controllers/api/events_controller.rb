@@ -7,23 +7,25 @@ class API::EventsController < ApplicationController
    
    def set_access_control_headers
       headers['Access-Control-Allow-Origin'] = '*'
-      headers['Access-Control-Allow-Methods'] = 'Post, GET, Options'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, Options'
       headers['Access-Control-Allow-Headers'] = 'Content-Type'
    end
    
    def create
-       registered_application = RegisteredApplication.find_by(url: request.env['HTTP_ORIGIN'])
+       registered_application = Application.find_by(url: request.env['HTTP_ORIGIN'])
        if registered_application == nil
            render json: "Unregistered Application", status: :unprocessable_entity
        else
-           @event = registered_application.events.build(event_params)
+           puts event_params
+           
+            @event = registered_application.events.build(event_params)
             if @event.save
                 render json: @event, status: :created
             else 
                 render json: {errors: @event.errors}, status: :unprocessable_entity
             end
        end
-   end
+   end   
    
    def preflight
       head 200 
@@ -32,7 +34,7 @@ class API::EventsController < ApplicationController
    private
    
    def event_params
-      params.require(:event).permit(:name) 
+      params.require(:event).permit(:title)
    end
 end
 
