@@ -35,6 +35,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'chartkick'
 gem 'groupdate'
+gem 'pg'
 
 
 group :development, :test do
