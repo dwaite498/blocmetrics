@@ -25,7 +25,7 @@ class API::EventsController < ApplicationController
                 render json: {errors: @event.errors}, status: :unprocessable_entity
             end
        end
-   end   
+   end
    
    def preflight
       head 200 

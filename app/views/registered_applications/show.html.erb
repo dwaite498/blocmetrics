@@ -1,13 +1,10 @@
 <h3><%= @application.title %></h3>
 
+
 <div class='container'>
     <p> URL: <%= @application.url %></p>
     <p> Created At: <%= @application.created_at %></p>
     <%= link_to 'Delete App', @applications, method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you would like to delete this app?" } %>
 </div>
-<% @events.each do |title, events| %>
-<div class="container">
-        <%= title %>
-        <%= events.length %>
-</div>
-<% end %>
+    <%= pie_chart @application.events.group(:title).count %>
+    <%= line_chart @application.events.group_by_day(:created_at).count %>

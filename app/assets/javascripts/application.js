@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require chartkick
 //= require_tree .
+
 
 var blocmetrics = {};
     blocmetrics.report = function(eventName){
